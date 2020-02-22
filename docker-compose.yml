@@ -1,0 +1,18 @@
+version: '3'
+services:
+  consul:
+    image: consul
+    ports:
+      - 8500:8500
+  k8s-profile-issue:
+    image: openjdk:11-jre-slim
+    command:
+      - java
+      - -Dspring.profiles.active=kubernetes
+      - -Dspring.cloud.service-registry.auto-registration.enabled=false
+      - -jar
+      - /app/k8s-profile-issue-0.0.1-SNAPSHOT.jar
+    ports:
+      - 8080:8080
+    volumes:
+      - "./build/libs/:/app/:ro"

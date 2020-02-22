@@ -1,0 +1,14 @@
+spring:
+  application:
+    name: k8s-profile-issue
+  cloud:
+    consul:
+      host: consul
+      discovery:
+        register: false
+    kubernetes:
+      enabled: false
+      discovery:
+        enabled: false
+      ribbon:
+        enabled: false
